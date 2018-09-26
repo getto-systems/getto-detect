@@ -1,0 +1,26 @@
+{
+  "name": "getto-detect",
+  "version": "0.1.0",
+  "description": "javascript function for static web to detect next version's path",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "build": "./bin/build.sh",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/getto-systems/getto-detect.git"
+  },
+  "author": "shun@getto.systems",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/getto-systems/getto-detect/issues"
+  },
+  "homepage": "https://github.com/getto-systems/getto-detect#readme",
+  "devDependencies": {
+    "uglify-js": "^3.4.9"
+  }
+}
