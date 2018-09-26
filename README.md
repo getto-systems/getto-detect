@@ -3,16 +3,19 @@
 javascript function for static web to detect next version's path
 
 ```js
-GettoDetect().from_current("1.0.0", function(path) {
+GettoDetect().from_current_version("1.0.0", function(path) {
   path // => "/2.1.0/index.html" (e.g.)
+
+  // redirect to next version
+  location.href = path
 });
 ```
 
 1. request to `HEAD /1.0.1/index.html`, `HEAD /1.1.0/index.html`, `HEAD /2.0.0/index.html`
 1. if response status is 200, re-check (1) with next version
-1. callback with (2) path
+1. finally, callback with (2) path
 
-- version number must be follow semantic version rule
+- version number must follow semantic version rule
 
 
 ###### Table of Contents
@@ -37,23 +40,36 @@ or
 curl https://github.com/getto-systems/getto-detect/blob/master/dist/getto-detect.js -o /path/to/your/project/getto-detect.js
 ```
 
-### from_current
+### from_current_version
 
 ```js
-GettoDetect().from_current("1.0.0", function(path) { });
+GettoDetect().from_current_version(
+  "1.0.0", // the version to start detecting
+  function(path) {
+    // detected
+  },
+  function() {
+    // not found
+  }
+);
 ```
 
 detect next version's path from current version
 
-### detect
+### options
+
+#### version_to_path
 
 ```js
-GettoDetect().detect(["1.0.0", "dist"], function(path) {
-  path // => /dist/index.html if HEAD /dist/index.html response == 200
-});
+GettoDetect({
+  // function that convert from version number to path
+  version_to_path: function(version) {
+    return "/" + version + "/index.html";
+  },
+})
 ```
 
-detect next version's path from list of versions
+specify function that convert from version number to path
 
 
 <a id="License"></a>
